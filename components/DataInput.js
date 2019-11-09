@@ -1,26 +1,29 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TextInput, Button, Alert } from "react-native";
+import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 
 export default class DataInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Bench: "",
-      ShoulderPress: "",
-      Deadlift: "",
-      Squat: "",
-      Compute: null
+      Bench: 0,
+      ShoulderPress: 0,
+      Deadlift: 0,
+      Squat: 0,
+      results: 0
     };
-    this.Compute = this.Compute.bind(this);
   }
 
-  componentDidMount() {}
+  handleCalculate = () => {
+    const { Bench, ShoulderPress, Deadlift, Squat } = this.state;
+    let average =
+      (parseInt(Bench) +
+        parseInt(ShoulderPress) +
+        parseInt(Deadlift) +
+        parseInt(Squat)) /
+      4;
 
-  Calculate() {
-    let numArr = [];
-    numArr.push();
-    Alert.alert(numArr);
-  }
+    this.setState({ results: average });
+  };
 
   render() {
     return (
@@ -32,8 +35,7 @@ export default class DataInput extends Component {
           <View style={styles.value}>
             <TextInput
               placeholder="Bench Press"
-              onChangeText={Bench => this.setState({ Bench })}
-              value={this.state.Bench}
+              onChangeText={Bench => this.setState({ ...this.state, Bench })}
               keyboardType={"numeric"}
             />
           </View>
@@ -45,8 +47,9 @@ export default class DataInput extends Component {
           <View style={styles.value}>
             <TextInput
               placeholder="Shoulder Press"
-              onChangeText={ShoulderPress => this.setState({ ShoulderPress })}
-              value={this.state.ShoulderPress}
+              onChangeText={ShoulderPress =>
+                this.setState({ ...this.state, ShoulderPress })
+              }
               keyboardType={"numeric"}
             />
           </View>
@@ -59,7 +62,6 @@ export default class DataInput extends Component {
             <TextInput
               placeholder="Deadlift"
               onChangeText={Deadlift => this.setState({ Deadlift })}
-              value={this.state.Deadlift}
               keyboardType={"numeric"}
             />
           </View>
@@ -72,14 +74,18 @@ export default class DataInput extends Component {
             <TextInput
               placeholder="Squat"
               onChangeText={Squat => this.setState({ Squat })}
-              value={this.state.Squat}
               keyboardType={"numeric"}
             />
           </View>
         </View>
         {/**button */}
         <View style={styles.Button}>
-          <Button title="Calculate" onPress={this.Calculate} />
+          <Button title="Calculate" onPress={this.handleCalculate} />
+        </View>
+        {/*calc*/}
+        <View style={styles.calculate}>
+          <Text style={{ fontSize: 35 }}>Your Power Level is</Text>
+          <Text style={{ fontSize: 65 }}>{this.state.results}</Text>
         </View>
       </View>
     );
@@ -101,7 +107,7 @@ const styles = StyleSheet.create({
     backgroundColor: "silver",
     alignItems: "center",
     justifyContent: "center",
-    flex: 3
+    flex: 2
   },
   titleText: {
     fontSize: 30
@@ -113,5 +119,11 @@ const styles = StyleSheet.create({
   },
   Button: {
     paddingTop: 20
+  },
+  calculate: {
+    flex: 3,
+    backgroundColor: "pink",
+    alignItems: "center",
+    justifyContent: "center"
   }
 });

@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 
 //component
 import DataInput from "./components/DataInput";
-import Calculate from "./components/Calculate";
 
 export default class App extends React.Component {
   render() {
@@ -19,11 +18,6 @@ export default class App extends React.Component {
           <View style={styles.input}>
             <Text style={{ textAlign: "center" }}>Enter your stats</Text>
             <DataInput />
-          </View>
-          {/* Calculator */}
-
-          <View style={styles.calculate}>
-            <Calculate />
           </View>
         </View>
       </View>
@@ -53,11 +47,5 @@ const styles = StyleSheet.create({
     flex: 3,
     backgroundColor: "gray",
     padding: 10
-  },
-  calculate: {
-    flex: 1,
-    backgroundColor: "pink",
-    alignItems: "center",
-    justifyContent: "center"
   }
 });
