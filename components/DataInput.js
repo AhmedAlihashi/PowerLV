@@ -78,8 +78,12 @@ export default class DataInput extends Component {
             />
           </View>
         </View>
-        {/**button */}
-        <View style={styles.Button}>
+        {/* Buttons */}
+        <View style={styles.buttonGroup}>
+          <Button
+            title="Stats"
+            onPress={() => this.props.navigation.navigate("Stats")}
+          />
           <Button title="Calculate" onPress={this.handleCalculate} />
         </View>
         {/*calc*/}
@@ -117,13 +121,15 @@ const styles = StyleSheet.create({
     backgroundColor: "pink",
     flex: 1
   },
-  Button: {
-    paddingTop: 20
-  },
   calculate: {
     flex: 3,
     backgroundColor: "pink",
     alignItems: "center",
     justifyContent: "center"
+  },
+  buttonGroup: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    margin: 10
   }
 });
