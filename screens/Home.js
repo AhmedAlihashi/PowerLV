@@ -14,8 +14,8 @@ export class HomeScreen extends Component {
         </View>
         <View style={styles.container}>
           {/* Input */}
+          <Text style={{ textAlign: "center" }}>Enter your stats</Text>
           <View style={styles.input}>
-            <Text style={{ textAlign: "center" }}>Enter your stats</Text>
             <DataInput navigation={this.props.navigation} />
           </View>
         </View>
@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 3,
-    backgroundColor: "gray",
     padding: 10
   }
 });

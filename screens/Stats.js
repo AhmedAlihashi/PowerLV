@@ -5,11 +5,19 @@ export default class Stats extends Component {
   render() {
     return (
       <View style={styles.app}>
-        <Text>Stats Screen</Text>
-        <Button
-          title="Go to Home"
-          onPress={() => this.props.navigation.navigate("Home")}
-        />
+        <View style={{ marginLeft: 10, marginRight: 10 }}>
+          <Button
+            title="Go to Home"
+            onPress={() => this.props.navigation.navigate("Home")}
+          />
+        </View>
+        <View style={styles.container}></View>
+        <View style={styles.chart}>
+          <Text style={styles.titles}>Current Power Level</Text>
+        </View>
+        <View style={styles.scoreBoard}>
+          <Text style={styles.titles}>Rival Power Levels</Text>
+        </View>
       </View>
     );
   }
@@ -18,25 +26,30 @@ export default class Stats extends Component {
 const styles = StyleSheet.create({
   app: {
     flex: 1,
-    backgroundColor: "#BD6464",
-    padding: 20
+    paddingTop: 30,
+    backgroundColor: "#BD6464"
   },
   container: {
+    padding: 20,
+    justifyContent: "space-around"
+  },
+  titles: {
+    fontSize: 40
+  },
+  chart: {
     flex: 1,
-    flexDirection: "column",
-    justifyContent: "space-between",
-    alignItems: "stretch"
-  },
-  title: {
     alignItems: "center",
-    paddingBottom: 15
+    margin: 10,
+    borderRadius: 30,
+    borderWidth: 2,
+    backgroundColor: "rgba(112, 112, 112, 0.25)"
   },
-  titleText: {
-    fontSize: 85
-  },
-  input: {
-    flex: 3,
-    backgroundColor: "gray",
-    padding: 10
+  scoreBoard: {
+    flex: 1,
+    alignItems: "center",
+    margin: 10,
+    borderRadius: 30,
+    borderWidth: 2,
+    backgroundColor: "rgba(112, 112, 112, 0.25)"
   }
 });

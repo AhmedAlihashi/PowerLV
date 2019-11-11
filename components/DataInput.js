@@ -30,11 +30,13 @@ export default class DataInput extends Component {
       <View style={styles.DataInput}>
         <View style={styles.container}>
           <View style={styles.title}>
-            <Text style={styles.titleText}>Bench</Text>
+            <Text style={styles.titleText}>Bench Press</Text>
           </View>
           <View style={styles.value}>
             <TextInput
-              placeholder="Bench Press"
+              style={{ alignSelf: "center" }}
+              placeholder="Enter data here"
+              placeholderTextColor="rgba(36, 33, 43, 0.5)"
               onChangeText={Bench => this.setState({ ...this.state, Bench })}
               keyboardType={"numeric"}
             />
@@ -46,7 +48,9 @@ export default class DataInput extends Component {
           </View>
           <View style={styles.value}>
             <TextInput
-              placeholder="Shoulder Press"
+              style={{ alignSelf: "center" }}
+              placeholder="Enter data here"
+              placeholderTextColor="rgba(36, 33, 43, 0.5)"
               onChangeText={ShoulderPress =>
                 this.setState({ ...this.state, ShoulderPress })
               }
@@ -60,7 +64,9 @@ export default class DataInput extends Component {
           </View>
           <View style={styles.value}>
             <TextInput
-              placeholder="Deadlift"
+              style={{ alignSelf: "center" }}
+              placeholder="Enter data here"
+              placeholderTextColor="rgba(36, 33, 43, 0.5)"
               onChangeText={Deadlift => this.setState({ Deadlift })}
               keyboardType={"numeric"}
             />
@@ -72,7 +78,9 @@ export default class DataInput extends Component {
           </View>
           <View style={styles.value}>
             <TextInput
-              placeholder="Squat"
+              style={{ alignSelf: "center" }}
+              placeholder="Enter data here"
+              placeholderTextColor="rgba(36, 33, 43, 0.5)"
               onChangeText={Squat => this.setState({ Squat })}
               keyboardType={"numeric"}
             />
@@ -102,30 +110,43 @@ const styles = StyleSheet.create({
     justifyContent: "space-around"
   },
   container: {
-    backgroundColor: "#fff",
     flexDirection: "row",
     padding: 10,
-    flex: 1
+    flex: 1,
+    alignItems: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.64)",
+    borderWidth: 2,
+    borderRadius: 15,
+    margin: 5
   },
   title: {
-    backgroundColor: "silver",
+    backgroundColor: "rgba(255, 255, 255, 0.64)",
     alignItems: "center",
     justifyContent: "center",
-    flex: 2
+    flex: 2,
+    borderWidth: 2,
+    borderRadius: 10
   },
   titleText: {
-    fontSize: 30
+    fontSize: 23
   },
   value: {
     margin: 10,
-    backgroundColor: "pink",
-    flex: 1
+    backgroundColor: "rgba(255, 255, 255, 0.64)",
+    flex: 1,
+    borderWidth: 2,
+    borderRadius: 10,
+    height: 40,
+    padding: 2
   },
   calculate: {
     flex: 3,
-    backgroundColor: "pink",
+    backgroundColor: "rgba(255, 255, 255, 0.64)",
+    borderWidth: 2,
+    borderRadius: 10,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    padding: 15
   },
   buttonGroup: {
     flexDirection: "row",
