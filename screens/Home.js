@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 import DataInput from "../components/DataInput";
 
-export class Home extends Component {
+export class HomeScreen extends Component {
   render() {
     return (
       <View style={styles.app}>
@@ -24,7 +24,7 @@ export class Home extends Component {
   }
 }
 
-export default Home;
+export default HomeScreen;
 
 const styles = StyleSheet.create({
   app: {

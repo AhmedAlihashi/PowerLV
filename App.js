@@ -1,19 +1,28 @@
-import React from "react";
+import * as React from "react";
 
-import Home from "./screens/Home";
-import Stats from "./screens/Stats";
+import HomeScreen from "./screens/Home";
+import StatScreen from "./screens/Stats";
 
+// Navigation
+import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 
-const RootStack = createStackNavigator({
-  Profile: {
-    screen: Home,
-    screen: Stats
+const RootStack = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Stats: StatScreen
+  },
+  {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+      header: null
+    }
   }
-});
+);
 
+const AppContainer = createAppContainer(RootStack);
 export default class App extends React.Component {
   render() {
-    return <RootStack />;
+    return <AppContainer />;
   }
 }
