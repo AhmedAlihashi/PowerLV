@@ -1,5 +1,9 @@
 import * as React from "react";
 
+//might use later
+//import { Dimensions } from "react-native";
+//const screenWidth = Dimensions.get("window").width;
+
 import HomeScreen from "./screens/Home";
 import StatScreen from "./screens/Stats";
 
@@ -13,7 +17,7 @@ const RootStack = createStackNavigator(
     Stats: StatScreen
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "Stats",
     defaultNavigationOptions: {
       header: null
     }

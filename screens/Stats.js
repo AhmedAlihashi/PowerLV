@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Button, View, Text, StyleSheet } from "react-native";
 
+import ScoreBoard from "../components/ScoreBoard";
+import Chart from "../components/Chart";
+
 export default class Stats extends Component {
   render() {
     return (
@@ -13,10 +16,12 @@ export default class Stats extends Component {
         </View>
         <View style={styles.container}></View>
         <View style={styles.chart}>
-          <Text style={styles.titles}>Current Power Level</Text>
+          <Text style={styles.titles}>Power Tracker</Text>
+          <Chart />
         </View>
         <View style={styles.scoreBoard}>
           <Text style={styles.titles}>Rival Power Levels</Text>
+          <ScoreBoard />
         </View>
       </View>
     );
@@ -31,7 +36,7 @@ const styles = StyleSheet.create({
   },
   container: {
     padding: 20,
-    justifyContent: "space-around"
+    justifyContent: "space-evenly"
   },
   titles: {
     fontSize: 40
