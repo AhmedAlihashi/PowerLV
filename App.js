@@ -17,7 +17,7 @@ const RootStack = createStackNavigator(
     Stats: StatScreen
   },
   {
-    initialRouteName: "Stats",
+    initialRouteName: "Home",
     defaultNavigationOptions: {
       header: null
     }

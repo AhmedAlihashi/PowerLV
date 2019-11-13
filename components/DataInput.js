@@ -6,7 +6,6 @@ export default class DataInput extends Component {
     super(props);
     this.state = {
       Bench: 0,
-      ShoulderPress: 0,
       Deadlift: 0,
       Squat: 0,
       results: 0
@@ -14,15 +13,10 @@ export default class DataInput extends Component {
   }
 
   handleCalculate = () => {
-    const { Bench, ShoulderPress, Deadlift, Squat } = this.state;
-    let average =
-      (parseInt(Bench) +
-        parseInt(ShoulderPress) +
-        parseInt(Deadlift) +
-        parseInt(Squat)) /
-      4;
+    const { Bench, Deadlift, Squat } = this.state;
+    let average = (parseInt(Bench) + parseInt(Deadlift) + parseInt(Squat)) / 3;
 
-    this.setState({ results: average });
+    this.setState({ results: average.toFixed(2) });
   };
 
   render() {
@@ -38,22 +32,6 @@ export default class DataInput extends Component {
               placeholder="Enter data here"
               placeholderTextColor="rgba(36, 33, 43, 0.5)"
               onChangeText={Bench => this.setState({ ...this.state, Bench })}
-              keyboardType={"numeric"}
-            />
-          </View>
-        </View>
-        <View style={styles.container}>
-          <View style={styles.title}>
-            <Text style={styles.titleText}>Shoulder Press</Text>
-          </View>
-          <View style={styles.value}>
-            <TextInput
-              style={{ alignSelf: "center" }}
-              placeholder="Enter data here"
-              placeholderTextColor="rgba(36, 33, 43, 0.5)"
-              onChangeText={ShoulderPress =>
-                this.setState({ ...this.state, ShoulderPress })
-              }
               keyboardType={"numeric"}
             />
           </View>
