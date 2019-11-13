@@ -1,17 +1,17 @@
-import React, { Component } from "react";
+import React, { memo, Component } from "react";
 import { Button, View, Text, StyleSheet } from "react-native";
 
-import ScoreBoard from "../components/ScoreBoard";
 import Chart from "../components/Chart";
+import ScoreBoard from "../components/ScoreBoard";
 
-export default class Stats extends Component {
+class StatsScreen extends Component {
   render() {
     return (
       <View style={styles.app}>
         <View style={{ marginLeft: 10, marginRight: 10 }}>
           <Button
             title="Go to Home"
-            onPress={() => this.props.navigation.navigate("Home")}
+            onPress={() => this.props.navigation.navigate("Dashboard")}
           />
         </View>
         <View style={styles.container}>
@@ -28,6 +28,7 @@ export default class Stats extends Component {
     );
   }
 }
+export default memo(StatsScreen);
 
 const styles = StyleSheet.create({
   app: {

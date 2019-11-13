@@ -68,7 +68,7 @@ export default class DataInput extends Component {
         <View style={styles.buttonGroup}>
           <Button
             title="Stats"
-            onPress={() => this.props.navigation.navigate("Stats")}
+            onPress={() => this.props.navigation.navigate("StatsScreen")}
           />
           <Button title="Calculate" onPress={this.handleCalculate} />
         </View>

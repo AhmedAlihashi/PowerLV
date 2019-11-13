@@ -4,8 +4,15 @@ import * as React from "react";
 //import { Dimensions } from "react-native";
 //const screenWidth = Dimensions.get("window").width;
 
-import HomeScreen from "./screens/Home";
-import StatScreen from "./screens/Stats";
+import {
+  StatsScreen,
+  HomeScreen,
+  LoginScreen,
+  RegisterScreen,
+  ForgotPasswordScreen,
+  AuthLoadingScreen,
+  Dashboard
+} from "./src/screens";
 
 // Navigation
 import { createAppContainer } from "react-navigation";
@@ -13,11 +20,16 @@ import { createStackNavigator } from "react-navigation-stack";
 
 const RootStack = createStackNavigator(
   {
-    Home: HomeScreen,
-    Stats: StatScreen
+    StatsScreen,
+    HomeScreen,
+    LoginScreen,
+    RegisterScreen,
+    ForgotPasswordScreen,
+    Dashboard,
+    AuthLoadingScreen
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "AuthLoadingScreen",
     defaultNavigationOptions: {
       header: null
     }

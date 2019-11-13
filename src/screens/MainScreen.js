@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { memo, Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 import DataInput from "../components/DataInput";
 
-export class HomeScreen extends Component {
+class MainScreen extends Component {
   render() {
     return (
       <View style={styles.app}>
@@ -26,7 +26,7 @@ export class HomeScreen extends Component {
   }
 }
 
-export default HomeScreen;
+export default memo(MainScreen);
 
 const styles = StyleSheet.create({
   app: {
