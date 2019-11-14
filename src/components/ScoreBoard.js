@@ -1,17 +1,18 @@
 import React, { Component, Fragment } from "react";
 import { StyleSheet, View, Text, ScrollView } from "react-native";
 
+//used firebase proper b/c firestorter wont accept the global firebase file at root
+import firebase from "firebase";
 //firebase
 import { initFirestorter, Collection } from "firestorter";
 import { observer } from "mobx-react";
-import firebase from "../../firebase";
+import "@firebase/firestore";
 
-import { firebaseConfig } from "../core/config";
-
-const db = firebase.firestore();
+// init firestorter
+initFirestorter({ firebase: firebase });
 
 //Define collection
-const users = db.collection("users");
+const users = new Collection("users");
 
 const ScoreBoard = observer(
   class ScoreBoard extends Component {
