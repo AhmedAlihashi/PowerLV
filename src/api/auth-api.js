@@ -7,7 +7,22 @@ export const logoutUser = () => {
 
 export const signInUser = async ({ name, email, password }) => {
   try {
-    await firebase.auth().createUserWithEmailAndPassword(email, password);
+    await firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(cred => {
+        return firebase
+          .firestore()
+          .collection("users")
+          .doc(cred.user.uid)
+          .set({
+            name: name,
+            email: email,
+            powerlv: 0,
+            rivals: [],
+            prevPowerLV: []
+          });
+      });
     firebase.auth().currentUser.updateProfile({
       displayName: name
     });
