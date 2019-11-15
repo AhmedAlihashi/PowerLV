@@ -1,16 +1,20 @@
 import React, { memo } from "react";
-import Button from "../components/Button";
-import { logoutUser } from "../api/auth-api";
 import { View, Text, StyleSheet } from "react-native";
+import { logoutUser } from "../api/auth-api";
+
+//firebase
+import firebase from "../../firebase";
+import "firebase/auth";
 
 import DataInput from "../components/DataInput";
+import Button from "../components/Button";
 
 const Dashboard = ({ navigation }) => (
   <View style={styles.app}>
     {/* Title */}
     <View style={styles.title}>
       <Text style={styles.titleText}>PowerLV</Text>
-      <Text>Welcome back </Text>
+      <Text>Welcome back {firebase.auth().currentUser.displayName} </Text>
     </View>
     <View style={styles.container}>
       {/* Input */}
