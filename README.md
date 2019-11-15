@@ -12,6 +12,14 @@ queries firestore for previous power level entries.
 
 # Notable Technologies Used 
 expo, react-navigation, react-native-svg-charts, Firebase, Firebase/Auth, Firestore,  mobx.
+# Instructions
+<ol>from root run:
+  <li>(if you dont already have expo installed)npm install -g expo-cli/li>
+  <li>npm install</li>
+  <li>expo start</li>
+  <li>run the app either via simulated phone or via expo ios or android app by scanning QR code</li>
+</ol>
+
 # Demo to date
 <br/>
-<img src="./designs/PowerLV-demo.gif" height=500 width=330/>
+<img src="./designs/PowerLV-demo.gif" height=560 width=330/>
