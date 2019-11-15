@@ -2,26 +2,31 @@ import React from "react";
 import { Dimensions, View } from "react-native";
 import { Grid, LineChart, XAxis, YAxis } from "react-native-svg-charts";
 
-class Chart extends React.PureComponent {
-  render() {
-    const data = [
-      50,
-      10,
-      40,
-      95,
-      -4,
-      -24,
-      85,
-      91,
-      35,
-      53,
-      -53,
-      24,
-      50,
-      -20,
-      -80
-    ];
+import firebase from "firebase";
+import "@firebase/firestore";
+import "firebase/auth";
+const db = firebase.firestore();
+class Chart extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: []
+    };
+  }
 
+  componentDidMount() {
+    db.collection("users")
+      .where("email", "==", firebase.auth().currentUser.email)
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          this.setState({ data: doc.data().prevPowerLV });
+        });
+      });
+  }
+  render() {
+    const data = this.state.data;
+    console.log(this.state.data);
     const axesSvg = { fontSize: 10, fill: "white" };
     const verticalContentInset = { top: 10, bottom: 10 };
     const xAxisHeight = 30;
