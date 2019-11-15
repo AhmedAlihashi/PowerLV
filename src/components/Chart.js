@@ -24,9 +24,12 @@ class Chart extends React.Component {
         });
       });
   }
+  componentDidUpdate() {
+    this.componentDidMount();
+  }
+
   render() {
     const data = this.state.data;
-    console.log(this.state.data);
     const axesSvg = { fontSize: 10, fill: "white" };
     const verticalContentInset = { top: 10, bottom: 10 };
     const xAxisHeight = 30;
