@@ -4,13 +4,14 @@ import Logo from "../components/Logo";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import Paragraph from "../components/Paragraph";
+import { Text } from "react-native";
 
 const HomeScreen = ({ navigation }) => (
   <Background>
     <Logo />
     <Header>PowerLV Login</Header>
 
-    <Paragraph>Welcome To PowerLV</Paragraph>
+    <Paragraph>Welcome To PowerLV </Paragraph>
     <Button mode="contained" onPress={() => navigation.navigate("LoginScreen")}>
       Login
     </Button>
@@ -20,6 +21,7 @@ const HomeScreen = ({ navigation }) => (
     >
       Sign Up
     </Button>
+    <Text>An app by Ahmed Ali</Text>
   </Background>
 );
 
