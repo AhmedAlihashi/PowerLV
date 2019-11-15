@@ -13,7 +13,7 @@ class Chart extends React.Component {
       data: []
     };
   }
-
+  // queries users database for prevPowerLV and puts it into graph
   componentDidMount() {
     db.collection("users")
       .where("email", "==", firebase.auth().currentUser.email)
