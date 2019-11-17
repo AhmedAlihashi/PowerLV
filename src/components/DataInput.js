@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 
+//firebase
+import firebase from "../../firebase";
+import "@firebase/firestore";
+import "firebase/auth";
+const db = firebase.firestore();
+
 export default class DataInput extends Component {
   constructor(props) {
     super(props);
@@ -8,15 +14,41 @@ export default class DataInput extends Component {
       Bench: 0,
       Deadlift: 0,
       Squat: 0,
-      results: 0
+      results: 0,
+      show: false,
+      numArr: []
     };
   }
+
+  componentDidMount() {
+    db.collection("users")
+      .where("email", "==", firebase.auth().currentUser.email)
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          this.setState({ numArr: doc.data().prevPowerLV });
+          console.log(`mount arry value ${this.state.numArr}`);
+        });
+      });
+  }
+  // to fix the duplicates issue, read current array in db, add new data,
+  // and push new array to db
+  handleSubmit = () => {
+    const { results, numArr } = this.state;
+    levelArr = db.collection("users").doc(firebase.auth().currentUser.uid);
+
+    numArr.push(Number(results));
+    levelArr.set({ prevPowerLV: numArr }, { merge: true });
+    this.setState({ show: false });
+
+    console.log(`local new array ${numArr}`);
+  };
 
   handleCalculate = () => {
     const { Bench, Deadlift, Squat } = this.state;
     let average = (parseInt(Bench) + parseInt(Deadlift) + parseInt(Squat)) / 3;
 
-    this.setState({ results: average.toFixed(2) });
+    this.setState({ show: true, results: average.toFixed(2) });
   };
 
   render() {
@@ -70,6 +102,13 @@ export default class DataInput extends Component {
             title="Stats"
             onPress={() => this.props.navigation.navigate("StatsScreen")}
           />
+          {this.state.show ? (
+            <Button
+              title="Submit"
+              color="#19c47d"
+              onPress={this.handleSubmit}
+            />
+          ) : null}
           <Button title="Calculate" onPress={this.handleCalculate} />
         </View>
         {/*calc*/}
@@ -128,7 +167,7 @@ const styles = StyleSheet.create({
   },
   buttonGroup: {
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     margin: 10
   }
 });

@@ -2,10 +2,12 @@ import React from "react";
 import { Dimensions, View } from "react-native";
 import { Grid, LineChart, XAxis, YAxis } from "react-native-svg-charts";
 
-import firebase from "firebase";
+//firebase
+import firebase from "../../firebase";
 import "@firebase/firestore";
 import "firebase/auth";
 const db = firebase.firestore();
+
 class Chart extends React.Component {
   constructor(props) {
     super(props);
@@ -24,10 +26,9 @@ class Chart extends React.Component {
         });
       });
   }
-  componentDidUpdate() {
-    this.componentDidMount();
-  }
 
+  // create listener that updates the chart based on new data in prevPowerLV (other than
+  //  componentDidUpdate)
   render() {
     const data = this.state.data;
     const axesSvg = { fontSize: 10, fill: "white" };
