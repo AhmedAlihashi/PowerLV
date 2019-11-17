@@ -1,25 +1,25 @@
 # PowerLV
-<b>This app is currently still in development.</b>
-<br/>
-The purpose of this app is to track the fitness progress of a user and compare current progress with friends.
-PowerLV uses <b> React Native </b> as a frontend solution in conjunction with <b>Google Firebase</b> as a backend. 
+#### This app is currently still in development.
 
-# Features
+The purpose of this app is to track the fitness progress of a user and compare current progress with friends.
+PowerLV uses `React Native` as a frontend solution in conjunction with `Google Firebase` as a backend. 
+
+## Features
 The app features full CRUD operations regarding the management of users. Users can also request to have 
 their password changed if they forget their credentials via their provided email. Authenticated user accounts are also directly
-connected to Firestore (database within Firebase), creating a smoother development/user experience. The Power Tracker graph
+connected to `Firestore` (database within Firebase), creating a smoother development/user experience. The Power Tracker graph
 queries firestore for previous power level entries.
 
-# Notable Technologies Used 
+## Notable Technologies Used 
 expo, react-navigation, react-native-svg-charts, Firebase, Firebase/Auth, Firestore,  mobx.
-# Instructions
-<ol>from root run:
-  <li>(if you dont already have expo installed)npm install -g expo-cli/li>
-  <li>npm install</li>
-  <li>expo start</li>
-  <li>run the app either via simulated phone or via expo ios or android app by scanning QR code</li>
-</ol>
-
+## Instructions
+from root run:
+(if you dont already have expo installed)
+npm install -g expo-cli
+```
+  npm install
+  expo start
+  run the app either via simulated phone or via expo ios or android app by scanning QR code
+```
 # Demo to date
-<br/>
 <img src="./designs/PowerLV-demo.gif" height=560 width=330/>
