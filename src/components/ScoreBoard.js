@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { StyleSheet, View, Text, ScrollView } from "react-native";
 
 //used firebase proper b/c firestorter wont accept the global firebase file at root
@@ -18,20 +18,18 @@ const ScoreBoard = observer(
   class ScoreBoard extends Component {
     render() {
       return (
-        <Fragment>
-          <ScrollView>
-            {users.docs.map(doc => (
-              <ScoreBoardEntries key={doc.id} doc={doc} />
-            ))}
-          </ScrollView>
-        </Fragment>
+        <ScrollView>
+          {users.docs.map(doc => (
+            <ScoreBoardEntries key={doc.id} doc={doc} />
+          ))}
+        </ScrollView>
       );
     }
   }
 );
 
 const ScoreBoardEntries = observer(({ doc }) => {
-  const { name, powerlv } = doc.data;
+  const { name, currPowerLV } = doc.data;
   return (
     <View style={styles.users}>
       <View style={styles.container}>
@@ -39,7 +37,7 @@ const ScoreBoardEntries = observer(({ doc }) => {
           <Text style={styles.name}>{name}</Text>
         </View>
         <View>
-          <Text style={styles.powerlv}>{powerlv}</Text>
+          <Text style={styles.powerlv}>{currPowerLV}</Text>
         </View>
       </View>
     </View>

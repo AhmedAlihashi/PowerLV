@@ -38,7 +38,11 @@ export default class DataInput extends Component {
     levelArr = db.collection("users").doc(firebase.auth().currentUser.uid);
 
     numArr.push(Number(results));
-    levelArr.set({ prevPowerLV: numArr }, { merge: true });
+    let lastElement = numArr[numArr.length - 1];
+    levelArr.set(
+      { prevPowerLV: numArr, currPowerLV: lastElement },
+      { merge: true }
+    );
     this.setState({ show: false });
 
     console.log(`New Local Array ${numArr}`);
