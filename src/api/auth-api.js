@@ -18,7 +18,7 @@ export const signInUser = async ({ name, email, password }) => {
           .set({
             name: name,
             email: email,
-            powerlv: 0,
+            currPowerLV: 0,
             rivals: [],
             prevPowerLV: []
           });

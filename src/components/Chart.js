@@ -31,7 +31,7 @@ class Chart extends React.Component {
   //  componentDidUpdate)
   render() {
     const data = this.state.data;
-    const axesSvg = { fontSize: 10, fill: "white" };
+    const axesSvg = { fontSize: 12, fill: "white" };
     const verticalContentInset = { top: 10, bottom: 10 };
     const xAxisHeight = 30;
 

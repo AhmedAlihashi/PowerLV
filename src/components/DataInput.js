@@ -27,7 +27,7 @@ export default class DataInput extends Component {
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
           this.setState({ numArr: doc.data().prevPowerLV });
-          console.log(`mount arry value ${this.state.numArr}`);
+          console.log(`Mount Arry Value ${this.state.numArr}`);
         });
       });
   }
@@ -41,7 +41,7 @@ export default class DataInput extends Component {
     levelArr.set({ prevPowerLV: numArr }, { merge: true });
     this.setState({ show: false });
 
-    console.log(`local new array ${numArr}`);
+    console.log(`New Local Array ${numArr}`);
   };
 
   handleCalculate = () => {
