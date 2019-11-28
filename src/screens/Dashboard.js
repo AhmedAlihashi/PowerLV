@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, Button, StyleSheet } from "react-native";
 import { logoutUser } from "../api/auth-api";
 
 //firebase
@@ -7,7 +7,6 @@ import firebase from "../../firebase";
 import "firebase/auth";
 
 import DataInput from "../components/DataInput";
-import Button from "../components/Button";
 
 const Dashboard = ({ navigation }) => (
   <View style={styles.app}>
@@ -21,9 +20,7 @@ const Dashboard = ({ navigation }) => (
       <Text style={{ textAlign: "center", fontSize: 30 }}>
         Enter your stats
       </Text>
-      <Button mode="outlined" onPress={() => logoutUser()}>
-        Logout
-      </Button>
+      <Button title="Logout" color="#64BDBD" onPress={() => logoutUser()} />
       <View style={styles.input}>
         <DataInput navigation={navigation} />
       </View>

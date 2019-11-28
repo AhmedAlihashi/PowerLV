@@ -104,6 +104,7 @@ export default class DataInput extends Component {
         <View style={styles.buttonGroup}>
           <Button
             title="Stats"
+            color="#64BDBD"
             onPress={() => this.props.navigation.navigate("StatsScreen")}
           />
           {this.state.show ? (
@@ -113,7 +114,11 @@ export default class DataInput extends Component {
               onPress={this.handleSubmit}
             />
           ) : null}
-          <Button title="Calculate" onPress={this.handleCalculate} />
+          <Button
+            title="Calculate"
+            color="#64BDBD"
+            onPress={this.handleCalculate}
+          />
         </View>
         {/*calc*/}
         <View style={styles.calculate}>
