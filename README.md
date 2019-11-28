@@ -21,6 +21,16 @@ npm install -g expo-cli
   expo start
   run the app either via simulated phone or via expo ios or android app by scanning QR code
 ```
+# Screens
+<div>
+<img  src="./designs/homeScreen.png" height=560 width=330 />
+<img align="right" src="./designs/statScreen.png" height=560 width=330/>
+</div>  
+
+
+
+
+
 # Demo to date
 
 <img src="./designs/PowerLV-demo.gif" height=560 width=330/>
