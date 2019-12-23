@@ -1,3 +1,4 @@
+import "./fixtimerbug";
 import * as React from "react";
 
 //might use later
