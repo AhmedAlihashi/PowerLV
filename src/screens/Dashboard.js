@@ -13,7 +13,12 @@ const Dashboard = ({ navigation }) => (
     {/* Title */}
     <View style={styles.title}>
       <Text style={styles.titleText}>PowerLV</Text>
-      <Text>Welcome back {firebase.auth().currentUser.displayName} </Text>
+      <Text>
+        Welcome back{" "}
+        <Text style={{ color: "white" }}>
+          {firebase.auth().currentUser.displayName}
+        </Text>
+      </Text>
     </View>
     <View style={styles.container}>
       {/* Input */}
