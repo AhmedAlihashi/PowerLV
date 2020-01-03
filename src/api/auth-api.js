@@ -5,6 +5,42 @@ export const logoutUser = () => {
   firebase.auth().signOut();
 };
 
+const friendCodeCheck = () => {
+  let db = firebase.firestore();
+  const query = db
+    .collection("friendCodes")
+    .get()
+    .then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        doc.id;
+      });
+    });
+
+  let randomNum = Math.floor(Math.random() * 1000000 + 1);
+  console.log(` Generated FriendCode => ${randomNum}`);
+
+  addFriendCode = strValue =>
+    db
+      .collection("friendCodes")
+      .doc(strValue)
+      .set({});
+
+  if (randomNum === Number(query)) {
+    console.log(
+      ` FriendCode is taken | Random number => ${randomNum} | recalculating ... `
+    );
+    // upon production use a more realistic number 1+ million
+    randomNum = Math.floor(Math.random() * 1000000 + 1);
+    friendCodeCheck();
+  } else {
+    console.log(` FriendCode is available | Random number => ${randomNum}`);
+    strValue = randomNum.toString();
+    console.log(`strValue => ${strValue}`);
+    addFriendCode(strValue);
+    return randomNum;
+  }
+};
+
 export const signInUser = async ({ name, email, password }) => {
   try {
     await firebase
@@ -18,6 +54,7 @@ export const signInUser = async ({ name, email, password }) => {
           .set({
             name: name,
             email: email,
+            friendNum: friendCodeCheck(),
             currPowerLV: 0,
             rivals: [],
             prevPowerLV: []
