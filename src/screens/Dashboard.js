@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, Component } from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 import { logoutUser } from "../api/auth-api";
 
@@ -13,12 +13,7 @@ const Dashboard = ({ navigation }) => (
     {/* Title */}
     <View style={styles.title}>
       <Text style={styles.titleText}>PowerLV</Text>
-      <Text>
-        Welcome back{" "}
-        <Text style={{ color: "white" }}>
-          {firebase.auth().currentUser.displayName}
-        </Text>
-      </Text>
+      <UserInfo />
     </View>
     <View style={styles.container}>
       {/* Input */}
@@ -34,6 +29,47 @@ const Dashboard = ({ navigation }) => (
 );
 
 export default memo(Dashboard);
+
+const db = firebase.firestore();
+
+class UserInfo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: "",
+      friendCode: 0
+    };
+  }
+
+  componentDidMount() {
+    db.collection("users")
+      .where("email", "==", firebase.auth().currentUser.email)
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          this.setState({
+            userName: doc.data().name,
+            friendCode: doc.data().friendCode
+          });
+        });
+      });
+  }
+  render() {
+    const { userName, friendCode } = this.state;
+    return (
+      <View>
+        <Text style={styles.userText}>
+          Welcome Back:
+          <Text style={{ color: "white" }}> {userName}</Text>
+        </Text>
+        <Text style={styles.userText}>
+          Friend Code:
+          <Text style={{ color: "white" }}> {friendCode}</Text>
+        </Text>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   app: {
@@ -53,6 +89,9 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 85
+  },
+  userText: {
+    textAlign: "center"
   },
   input: {
     flex: 3,
