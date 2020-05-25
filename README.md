@@ -13,13 +13,12 @@ queries firestore for previous power level entries.
 ## Notable Technologies Used 
 expo, react-navigation, react-native-svg-charts, Firebase, Firebase/Auth, Firestore,  mobx.
 ## Instructions
-from root run:
+from root in command line run:
 (if you dont already have expo installed)
-npm install -g expo-cli
 ```
-  npm install
-  expo start
-  run the app either via simulated phone or via expo ios or android app by scanning QR code
+  npm install -g expo-cli
+  npm install && npm run start
+  for quickest demo download the expo app for ios and run and scan the QR code with your iphone camera
 ```
 # Screens
 <p float="left">
