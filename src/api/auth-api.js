@@ -1,9 +1,7 @@
 import firebase from "firebase";
 import "firebase/auth";
 
-export const logoutUser = () => {
-  firebase.auth().signOut();
-};
+// ----------- Friend Code Check --------------
 
 const friendCodeCheck = () => {
   let db = firebase.firestore();
@@ -24,22 +22,31 @@ const friendCodeCheck = () => {
       .collection("friendCodes")
       .doc(strValue)
       .set({});
+  // upon production use a more realistic number 1+ million
+  // also test having the FriendCode being Taken
 
   if (randomNum === Number(query)) {
     console.log(
       ` FriendCode is taken | Random number => ${randomNum} | recalculating ... `
     );
-    // upon production use a more realistic number 1+ million
+
     randomNum = Math.floor(Math.random() * 1000000 + 1);
     friendCodeCheck();
   } else {
     console.log(` FriendCode is available | Random number => ${randomNum}`);
     strValue = randomNum.toString();
-    console.log(`strValue => ${strValue}`);
     addFriendCode(strValue);
     return randomNum;
   }
 };
+
+// ----------- logoutUser --------------
+
+export const logoutUser = () => {
+  firebase.auth().signOut();
+};
+
+// ----------- signInUser --------------
 
 export const signInUser = async ({ name, email, password }) => {
   try {
@@ -54,7 +61,7 @@ export const signInUser = async ({ name, email, password }) => {
           .set({
             name: name,
             email: email,
-            friendNum: friendCodeCheck(),
+            friendCode: friendCodeCheck(),
             currPowerLV: 0,
             rivals: [],
             prevPowerLV: []
@@ -91,6 +98,8 @@ export const signInUser = async ({ name, email, password }) => {
   }
 };
 
+// ----------- loginUser --------------
+
 export const loginUser = async ({ email, password }) => {
   try {
     await firebase.auth().signInWithEmailAndPassword(email, password);
@@ -117,6 +126,8 @@ export const loginUser = async ({ email, password }) => {
     }
   }
 };
+
+// ----------- sendEmailWithPassword --------------
 
 export const sendEmailWithPassword = async email => {
   try {

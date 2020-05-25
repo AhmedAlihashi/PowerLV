@@ -15,6 +15,13 @@ import {
 import { signInUser } from "../api/auth-api";
 import Toast from "../components/Toast";
 
+//firebase
+import firebase from "../../firebase";
+import "@firebase/firestore";
+import "firebase/auth";
+//create unique users
+const usernames = firebase.firestore().collection("usernames");
+
 const RegisterScreen = ({ navigation }) => {
   const [name, setName] = useState({ value: "", error: "" });
   const [email, setEmail] = useState({ value: "", error: "" });
@@ -60,7 +67,7 @@ const RegisterScreen = ({ navigation }) => {
       <Header>Create Account</Header>
 
       <TextInput
-        label="Name"
+        label="Username"
         returnKeyType="next"
         value={name.value}
         onChangeText={text => setName({ value: text, error: "" })}

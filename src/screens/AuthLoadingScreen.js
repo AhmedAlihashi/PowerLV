@@ -7,7 +7,7 @@ import { theme } from "../core/theme";
 import { firebaseConfig } from "../core/config";
 
 const AuthLoadingScreen = ({ navigation }) => {
-  firebase.auth().onAuthStateChanged(user => {
+  firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // User is logged in
       navigation.navigate("Dashboard");

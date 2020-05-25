@@ -33,7 +33,7 @@ class Chart extends React.Component {
     const data = this.state.data;
     const axesSvg = { fontSize: 12, fill: "white" };
     const verticalContentInset = { top: 10, bottom: 10 };
-    const xAxisHeight = 30;
+    const xAxisHeight = 15;
 
     return (
       <View style={{ height: 200, padding: 20, flexDirection: "row" }}>

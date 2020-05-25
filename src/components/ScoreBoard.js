@@ -16,6 +16,13 @@ const users = new Collection("users");
 
 const ScoreBoard = observer(
   class ScoreBoard extends Component {
+    constructor(props) {
+      super(props);
+    }
+
+    componentDidMount() {
+      console.log(`users => ${users.docs.name}`);
+    }
     render() {
       return (
         <ScrollView>

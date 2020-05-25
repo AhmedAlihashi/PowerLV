@@ -16,7 +16,7 @@ export default class DataInput extends Component {
       Squat: 0,
       results: 0,
       show: false,
-      numArr: []
+      numArr: [],
     };
   }
 
@@ -24,8 +24,8 @@ export default class DataInput extends Component {
     db.collection("users")
       .where("email", "==", firebase.auth().currentUser.email)
       .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
           this.setState({ numArr: doc.data().prevPowerLV });
           console.log(`Mount Arry Value ${this.state.numArr}`);
         });
@@ -67,7 +67,7 @@ export default class DataInput extends Component {
               style={{ alignSelf: "center" }}
               placeholder="Enter data here"
               placeholderTextColor="rgba(36, 33, 43, 0.5)"
-              onChangeText={Bench => this.setState({ ...this.state, Bench })}
+              onChangeText={(Bench) => this.setState({ Bench })}
               keyboardType={"numeric"}
             />
           </View>
@@ -81,7 +81,7 @@ export default class DataInput extends Component {
               style={{ alignSelf: "center" }}
               placeholder="Enter data here"
               placeholderTextColor="rgba(36, 33, 43, 0.5)"
-              onChangeText={Deadlift => this.setState({ Deadlift })}
+              onChangeText={(Deadlift) => this.setState({ Deadlift })}
               keyboardType={"numeric"}
             />
           </View>
@@ -95,7 +95,7 @@ export default class DataInput extends Component {
               style={{ alignSelf: "center" }}
               placeholder="Enter data here"
               placeholderTextColor="rgba(36, 33, 43, 0.5)"
-              onChangeText={Squat => this.setState({ Squat })}
+              onChangeText={(Squat) => this.setState({ Squat })}
               keyboardType={"numeric"}
             />
           </View>
@@ -133,7 +133,7 @@ export default class DataInput extends Component {
 const styles = StyleSheet.create({
   DataInput: {
     flex: 1,
-    justifyContent: "space-around"
+    justifyContent: "space-around",
   },
   container: {
     flexDirection: "row",
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255, 255, 255, 0.64)",
     borderWidth: 2,
     borderRadius: 15,
-    margin: 5
+    margin: 5,
   },
   title: {
     backgroundColor: "rgba(255, 255, 255, 0.64)",
@@ -151,10 +151,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flex: 2,
     borderWidth: 2,
-    borderRadius: 10
+    borderRadius: 10,
   },
   titleText: {
-    fontSize: 23
+    fontSize: 23,
   },
   value: {
     margin: 10,
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 10,
     height: 40,
-    padding: 2
+    padding: 2,
   },
   calculate: {
     flex: 3,
@@ -172,11 +172,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
-    padding: 15
+    // padding: 15
   },
   buttonGroup: {
     flexDirection: "row",
     justifyContent: "space-between",
-    margin: 10
-  }
+    margin: 10,
+  },
 });
