@@ -1,5 +1,5 @@
 import "./fixtimerbug";
-import * as React from "react";
+import React, { Compo } from "react";
 
 //might use later
 //import { Dimensions } from "react-native";
@@ -12,35 +12,55 @@ import {
   RegisterScreen,
   ForgotPasswordScreen,
   AuthLoadingScreen,
-  Dashboard
+  Dashboard,
 } from "./src/screens";
 
 // Navigation
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-const RootStack = createStackNavigator(
-  {
-    StatsScreen,
-    HomeScreen,
-    LoginScreen,
-    RegisterScreen,
-    ForgotPasswordScreen,
-    Dashboard,
-    AuthLoadingScreen
-  },
-  {
-    initialRouteName: "AuthLoadingScreen",
-    defaultNavigationOptions: {
-      header: null
-    }
-  }
+const Stack = createStackNavigator();
+
+const App = () => (
+  <NavigationContainer>
+    <Stack.Navigator initialRouteName="AuthLoadingScreen">
+      <Stack.Screen
+        name="InitialRoute"
+        component={AuthLoadingScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Dashboard"
+        component={Dashboard}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ForgotPasswordScreen"
+        component={ForgotPasswordScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="RegisterScreen"
+        component={RegisterScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="LoginScreen"
+        component={LoginScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="StatsScreen"
+        component={StatsScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{ headerShown: false, gestureEnabled: true }}
+      />
+    </Stack.Navigator>
+  </NavigationContainer>
 );
 
-const AppContainer = createAppContainer(RootStack);
-
-export default class App extends React.Component {
-  render() {
-    return <AppContainer />;
-  }
-}
+export default App;
